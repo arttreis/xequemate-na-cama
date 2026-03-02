@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecionando... | Xeque-Mate na Cama</title>
+    
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '661630316482683');
+        fbq('track', 'PageView');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg: #080212;
+            --pink: #e91e8c;
+            --pink-light: #f472b6;
+            --purple: #7c3aed;
+            --grad: linear-gradient(135deg, #e91e8c 0%, #7c3aed 100%);
+            --white: #ffffff;
+            --muted: rgba(255, 255, 255, .6);
+            --serif: 'Playfair Display', Georgia, serif;
+            --sans: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: var(--sans);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Grain Texture */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .redirect-container {
+            padding: 24px;
+            z-index: 1;
+            max-width: 400px;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 3px solid rgba(233, 30, 140, 0.1);
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            border-top-color: var(--pink);
+            animation: rotation 1s linear infinite;
+            margin-bottom: 24px;
+        }
+
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .btn-manual {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--pink-light);
+            text-decoration: underline;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .btn-manual:hover { opacity: 1; }
+
+        /* Background Glows */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(233, 30, 140, 0.15) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow" style="top: -100px; left: -100px;"></div>
+    <div class="glow" style="bottom: -100px; right: -100px;"></div>
+
+    <div class="redirect-container">
+        <span class="loader"></span>
+        <h1>Preparando seu acesso...</h1>
+        <p>Você está sendo redirecionada para a página de pagamento seguro.</p>
+        
+        <a id="manual-link" href="https://payfast.greenn.com.br/redirect/267587/?a_id=2038303&utm_source=whatsapp&utm_medium=grupos&utm_campaign=marco-vi" class="btn-manual">
+            Clique aqui se não for redirecionada
+        </a>
+    </div>
+
+    <script>
+    (function(){
+        "use strict";
+        
+        var DEST_URL = "https://payfast.greenn.com.br/redirect/267587/?a_id=2038303&utm_source=whatsapp&utm_medium=grupos&utm_campaign=marco-vi";
+        var UTM_KEYS = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
+        var STORAGE_KEY = "utm_params";
+
+        function getUTMsFromURL(){
+            var p = new URLSearchParams(window.location.search), u = {}, f = false;
+            UTM_KEYS.forEach(function(k){ var v = p.get(k); if(v){ u[k] = v; f = true; } });
+            return f ? u : null;
+        }
+
+        function storeUTMs(u){ try{ sessionStorage.setItem(STORAGE_KEY, JSON.stringify(u)); } catch(e){} }
+        
+        function getStoredUTMs(){ 
+            try { 
+                var d = sessionStorage.getItem(STORAGE_KEY); 
+                return d ? JSON.parse(d) : null; 
+            } catch(e){ return null; } 
+        }
+
+        function appendUTMs(href, u){
+            try {
+                var url = new URL(href);
+                Object.keys(u).forEach(function(k){
+                    url.searchParams.set(k, u[k]);
+                });
+                return url.toString();
+            } catch(e){ return href; }
+        }
+
+        // Lógica de Processamento
+        var currentUTMs = getUTMsFromURL();
+        if(currentUTMs){
+            storeUTMs(currentUTMs);
+        } else {
+            currentUTMs = getStoredUTMs();
+        }
+
+        var finalUrl = currentUTMs ? appendUTMs(DEST_URL, currentUTMs) : DEST_URL;
+
+        // Atualiza o link manual por segurança
+        document.getElementById('manual-link').href = finalUrl;
+
+        // Redirecionamento após pequeno delay para garantir disparo de scripts de track
+        setTimeout(function(){
+            window.location.replace(finalUrl);
+        }, 800);
+    })();
+    </script>
+</body>
+</html>
