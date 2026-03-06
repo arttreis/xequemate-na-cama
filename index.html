@@ -150,68 +150,43 @@
     /* ── MÃO DUPLA — DESTAQUE ── */
     .banner-link--featured {
       position: relative;
-      border-radius: 18px;
-      border: none;
       overflow: visible;
-      padding: 3px;
-      background: var(--grad);
+      border: none;
+      background: transparent;
       box-shadow:
-        0 0 0 1px rgba(233,30,140,.4),
-        0 4px 24px rgba(233,30,140,.35),
-        0 8px 48px rgba(124,58,237,.25);
+        0 4px 32px rgba(233,30,140,.4),
+        0 8px 64px rgba(124,58,237,.3),
+        0 0 0 1px rgba(233,30,140,.25);
       animation: featureGlow 3s ease-in-out infinite;
     }
     @keyframes featureGlow {
       0%, 100% {
         box-shadow:
-          0 0 0 1px rgba(233,30,140,.4),
-          0 4px 24px rgba(233,30,140,.35),
-          0 8px 48px rgba(124,58,237,.25);
+          0 4px 32px rgba(233,30,140,.4),
+          0 8px 64px rgba(124,58,237,.3),
+          0 0 0 1px rgba(233,30,140,.25);
       }
       50% {
         box-shadow:
-          0 0 0 2px rgba(233,30,140,.7),
-          0 4px 32px rgba(233,30,140,.55),
-          0 12px 60px rgba(124,58,237,.45);
+          0 4px 48px rgba(233,30,140,.65),
+          0 12px 80px rgba(124,58,237,.5),
+          0 0 0 1px rgba(233,30,140,.5);
       }
     }
     .banner-link--featured:hover {
       transform: translateY(-3px) scale(1.005);
       box-shadow:
-        0 0 0 2px rgba(233,30,140,.8),
-        0 8px 40px rgba(233,30,140,.5),
-        0 16px 64px rgba(124,58,237,.4);
+        0 8px 56px rgba(233,30,140,.7),
+        0 16px 96px rgba(124,58,237,.55),
+        0 0 0 1px rgba(233,30,140,.6);
     }
     .banner-link--featured .banner-inner {
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       line-height: 0;
-      position: relative;
     }
     .banner-link--featured img {
-      border-radius: 16px;
-    }
-
-    /* Badge "EM ALTA" pulsante */
-    .banner-link--featured::before {
-      content: '🔥 EM ALTA';
-      position: absolute;
-      top: -1px;
-      right: 14px;
-      background: var(--grad);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      padding: 4px 10px;
-      border-radius: 0 0 10px 10px;
-      z-index: 10;
-      animation: badgePulse 2s ease-in-out infinite;
-    }
-    @keyframes badgePulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .75; }
+      border-radius: 14px;
     }
 
     /* ── FOOTER ── */
@@ -227,8 +202,7 @@
       .hero img { height: 257px; }
       .page { padding: 20px 12px 60px; }
       .links { gap: 10px; }
-      .banner-link--featured::before { font-size: .6rem; right: 10px; }
-    }
+}
   </style>
 </head>
 
