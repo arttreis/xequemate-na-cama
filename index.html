@@ -84,11 +84,20 @@
       line-height: 0;
       z-index: 1;
     }
-    .hero img {
+    .hero__bg {
       width: 100%;
       height: 538px;
       object-fit: cover;
       object-position: center top;
+      display: block;
+    }
+    .hero__content {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
       display: block;
     }
 
@@ -199,7 +208,7 @@
 
     /* ── MOBILE ── */
     @media (max-width: 480px) {
-      .hero img { height: 257px; }
+      .hero__bg { height: 257px; }
       .page { padding: 20px 12px 60px; }
       .links { gap: 16px; }
 }
@@ -210,7 +219,8 @@
 
   <!-- HERO BANNER -->
   <div class="hero">
-    <img src="brand-assets/bio/Group 13.png" alt="Larissa Oliveira — Sexóloga" />
+    <img class="hero__bg" src="brand-assets/bio/Group 13.png" alt="" />
+    <img class="hero__content" src="brand-assets/bio/hero.png" alt="Larissa Oliveira — Sexóloga" />
   </div>
 
   <div class="page">
